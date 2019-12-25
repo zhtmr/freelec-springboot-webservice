@@ -27,6 +27,7 @@ repositories {
 }
 
 dependencies { // 버전을 명시하지 않아야 맨위에 설정한 ${springBootVersion} 을 따름
-    compile('org.springframework.boot:spring-boot-starter-web') 
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
