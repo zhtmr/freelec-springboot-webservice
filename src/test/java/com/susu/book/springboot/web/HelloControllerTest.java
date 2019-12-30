@@ -47,7 +47,7 @@ public class HelloControllerTest {
         /*
          *  1. /hello/dto로 get요청
             2. "name", "amount" 파라미터 검증
-            3. name, amount와 같은지 테스트
+            3. name, amount,와 같은지 테스트
          */
 
         mvc.perform(
