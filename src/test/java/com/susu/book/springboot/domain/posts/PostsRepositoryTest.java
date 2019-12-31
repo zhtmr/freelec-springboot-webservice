@@ -12,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest // H2 database 자동 실행
 public class PostsRepositoryTest {
 
     @Autowired
@@ -28,8 +28,12 @@ public class PostsRepositoryTest {
         //given
         String title="테스트 게시글";
         String content="테스트본문";
+        /*
+            posts 테이블의 insert/update 쿼리 실행 (id 없으면 insert실행)
 
-        postsRepository.save(Posts.builder() // posts 테이블의 insert/update 쿼리 실행 (id 없으면 insert실행)
+            Hibernate: insert into posts (id, author, content, title) values (null, ?, ?, ?)
+         */
+        postsRepository.save(Posts.builder()
                 .title(title)
                 .content(content)
                 .author("zhtmr123@gmail.com")
@@ -37,6 +41,7 @@ public class PostsRepositoryTest {
 
         //when
         List<Posts> postsList = postsRepository.findAll();
+
 
         //then
         Posts posts = postsList.get(0);
