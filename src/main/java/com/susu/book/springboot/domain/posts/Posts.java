@@ -25,7 +25,7 @@ public class Posts {
 
     private String author;
 
-    @Builder // 디자인 패턴 : 빌더 패턴
+    @Builder // 디자인 패턴 : 빌더 패턴 (setter 메소드나, 매개변수 가진 생성자 대신 사용 : 실행시 변수전달 순서에서 자유로움, 메소드로 전달)
     public Posts(String title, String content, String author){
         this.title=title;
         this.content=content;

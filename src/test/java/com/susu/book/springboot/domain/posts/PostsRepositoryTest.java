@@ -11,10 +11,12 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest // H2 database 자동 실행
 public class PostsRepositoryTest {
 
+    // Test class should have exactly one public zero-argument constructor
     @Autowired
     PostsRepository postsRepository;
 
