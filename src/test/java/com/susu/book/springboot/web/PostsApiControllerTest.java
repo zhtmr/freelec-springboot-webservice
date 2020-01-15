@@ -50,14 +50,14 @@ public class PostsApiControllerTest {
 
         String url="http://localhost:" + port + "/api/v1/posts";
 
-        //when
+        //when (주소, 전달할 것, 반환 타입)
         ResponseEntity<Long> responseEntity=restTemplate.postForEntity(url,requestDto,Long.class);
 
         //then
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK); // 상태가 200인가
+        assertThat(responseEntity.getBody()).isGreaterThan(0L); // 생성된 PK가 0보다 큰가
 
-        List<Posts> all = postsRepository.findAll();
+        List<Posts> all = postsRepository.findAll(); // h2 db에 저장된 모든값 불러오기
         assertThat(all.get(0).getTitle()).isEqualTo(title);
         assertThat(all.get(0).getContent()).isEqualTo(content);
     }
