@@ -37,7 +37,7 @@ public class PostsResponseDto {
         this.author = entity.getAuthor();
     }
 }
-// id 는 Entity에서 auto-increment로 생성되기때문에
+//
 // public PostsResponseDto(Long id, String title, String content,String author ) {
 //        this.id = id;
 //        this.title = title;
