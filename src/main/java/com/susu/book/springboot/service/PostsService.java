@@ -119,7 +119,13 @@ public class PostsService {
      */
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto) {
+        // 영속성 컨텍스트에 데이터가 있는지 조회
         Posts posts = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
+        /*
+          Spring Data Jpa를 쓴다면 기본 옵션으로 EntityManager가 활성화되어 영속성 컨텍스트가 유지된 상태다. (영속성 컨텍스트에 엔티티 객체가 들어있는 상태)
+          업데이트로 값만 바꿔주면 트랜잭션 끝나는 시점에 DB반영
+          따라서 업데이트 쿼리 날리는 부분이 없다.
+        */
         posts.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
