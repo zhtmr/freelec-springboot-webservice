@@ -1,3 +1,5 @@
+// 여러 사람이 참여하는 프로젝트에서는 중복된 함수 이름이 자주 발생할 수 있음
+// index.js 만의 유효범위(scope)를 만들어 사용함.
 var index = {
     init : function(){
         var _this = this;
