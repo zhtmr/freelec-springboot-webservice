@@ -91,10 +91,11 @@ public class PostsService {
     }
 }
      */
+
+    // 저장
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
         return postsRepository.save(requestDto.toEntity()).getId(); // 저장하고 엔티티 Id(PK) 반환
-
     }
 
     /*  [ 람다식 안쓴 코드(익명 구현객체) ]
@@ -121,6 +122,8 @@ public class PostsService {
         [ 람다식을 사용하기 위한 인터페이스 조건 ]
         한개의 추상메소드만 가지고 있어야 한다. @FunctionalInterface 붙임
      */
+
+    // 수정
     @Transactional
     public Long update(Long id, PostsUpdateRequestDto requestDto) {
         // 영속성 컨텍스트에 데이터가 있는지 조회
@@ -134,6 +137,7 @@ public class PostsService {
         return id;
     }
 
+    // 조회
     public PostsResponseDto findById(Long id){
         Posts entity=postsRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 사용자가 없습니다. id="+id));
 //        Posts entity2 = postsRepository.findById(id).orElseThrow(IllegalArgumentException::new);
@@ -141,10 +145,18 @@ public class PostsService {
         return new PostsResponseDto(entity);
     }
 
+    // 전체조회
     @Transactional(readOnly = true) // 조회속도 개선
     public List<PostsListResponseDto> findAllDesc(){
         // postsRepository 결과로 넘어온 Posts의 Stream을 map을 통해 PostsListResponseDto 변환 -> List로 반환
         // .map(posts -> new PostsListResponseDto(posts))
         return postsRepository.findAllDesc().stream().map(PostsListResponseDto::new).collect(Collectors.toList());
+    }
+
+    // 삭제
+    @Transactional
+    public void delete(Long id){
+        Posts posts = postsRepository.findById(id).orElseThrow(()->new IllegalArgumentException("해당 사용자가 없습니다. id=" +id));
+        postsRepository.delete(posts);
     }
 }

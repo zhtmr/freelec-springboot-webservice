@@ -36,5 +36,6 @@ dependencies { // 버전을 명시하지 않아야 맨위에 설정한 ${springB
     compile('org.springframework.boot:spring-boot-starter-mustache')
     compile('org.springframework.boot:spring-boot-devtools')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    implementation 'org.jetbrains:annotations:15.0'
 
 }
