@@ -23,7 +23,7 @@ public class PostsApiController {
     }
 
     // 수정
-    @PutMapping("/api/v1/posts/{id}")
+    @PutMapping("/api/v1/posts/{id}") // {id} -> @PathVariable 매핑됨
     public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto requestDto){
         return postsService.update(id,requestDto);
     }

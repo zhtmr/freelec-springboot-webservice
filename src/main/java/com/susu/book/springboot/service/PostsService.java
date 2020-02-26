@@ -93,7 +93,7 @@ public class PostsService {
      */
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
-        return postsRepository.save(requestDto.toEntity()).getId(); // 저장하고 Id(PK) 반환
+        return postsRepository.save(requestDto.toEntity()).getId(); // 저장하고 엔티티 Id(PK) 반환
 
     }
 
