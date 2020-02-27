@@ -10,5 +10,11 @@
 ## Intellij + SpringBoot + Template engine 에서 livereload 하기
 
 
+## .gitignore 작동 안할때 -> 캐시삭제
+> git rm -r --cached .
+
+git add .
+
+git commit -m "fixed untracked files"
 
 
