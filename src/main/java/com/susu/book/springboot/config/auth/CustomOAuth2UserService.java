@@ -1,6 +1,7 @@
 package com.susu.book.springboot.config.auth;
 
 import com.susu.book.springboot.config.auth.dto.OAuthAttributes;
+import com.susu.book.springboot.config.auth.dto.SessionUser;
 import com.susu.book.springboot.domain.user.User;
 import com.susu.book.springboot.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
