@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum Role {
-//열거형 상수의 값이 불규칙적인 경우
+    // 열거형 상수의 값이 불규칙적인 경우
 //      1. 열거형 상수의 이름 옆에 원하는 값을 괄호()와 함께 적는다.
 //
 //      2. 지정된 값을 저장할 수 있는 인스턴스 변수와 생성자를 새로 추가한다.

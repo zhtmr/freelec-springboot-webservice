@@ -16,7 +16,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model){
-        // postsService.findAllDesc() 로 가져온 결과를 posts로 index.mustache에 전달 {{#posts}}로 조회
+        // postsService.findAllDesc() 로 가져온 결과를 posts로 index.mustache에 전달 -> view에서 {{#posts}}로 조회
         model.addAttribute("posts",postsService.findAllDesc());
         return "index"; // src/main/resources/templates/index.mustache로 View Resolver가 처리함
     }
