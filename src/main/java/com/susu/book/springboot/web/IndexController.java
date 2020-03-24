@@ -27,7 +27,8 @@ public class IndexController {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         // 값이 있으면 model에 userName을 담아서감. 값이 없으면 모델에 아무런 값이 없으므로 로그인 버튼이 보이게됨.
         if(user != null){
-            model.addAttribute("userName", user.getName());
+            model.addAttribute("userName", user.getName()); // 특이하게 username 으로 명명할 시 로컬 시스템 환경변수와 중복됨
+            System.out.println(user.getName());
         }
         return "index"; // src/main/resources/templates/index.mustache로 View Resolver가 처리함
     }
