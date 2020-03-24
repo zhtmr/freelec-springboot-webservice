@@ -5,10 +5,7 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
-// User 엔티티 값을 받을 session Dto
-/*
-
- */
+// User 엔티티 값을 받을 session Dto. 엔티티(객체)를 session에 저장하기 위해서 직렬화(byte)가 필요함.
 @Getter
 public class SessionUser implements Serializable {
     private String name;
