@@ -13,6 +13,6 @@ import java.util.List;
 * */
 public interface PostsRepository extends JpaRepository<Posts, Long> {
     // SpringDataJpa에서 지원하지 않는 메소드는 쿼리로 작성해도됨(아래 코드는 기본 메소드로 가능하지만 한번 해본다)
-    @Query("SELECT p FROM Posts p ORDER BY p.id DESC") // JPQL에선 테이블이 아니라 엔티티 기반 네이티브 쿼리에서 p.*와 같음
+    @Query("SELECT p FROM Posts p ORDER BY p.id DESC") // JPQL에선 테이블이 아니라 엔티티 기반. 네이티브 쿼리에서 p.*와 같음
     List<Posts> findAllDesc();
 }

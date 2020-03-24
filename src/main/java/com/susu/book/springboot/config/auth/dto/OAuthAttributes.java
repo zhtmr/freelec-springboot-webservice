@@ -7,6 +7,7 @@ import lombok.Getter;
 
 import java.util.Map;
 
+// OAuth2UserService 를 통해 가져온 OAuth2User의 Attribute를 담을 클래스
 @Getter
 public class OAuthAttributes {
     private Map<String, Object> attributes;
@@ -24,10 +25,12 @@ public class OAuthAttributes {
         this.picture = picture;
     }
 
+    // 구글 로그인을 위한 값들 가져옴
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes){
         return ofGoogle(userNameAttributeName, attributes);
     }
 
+    // Dto 에 담음
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes){
         return OAuthAttributes.builder()
                 .name((String)attributes.get("name"))
@@ -38,6 +41,7 @@ public class OAuthAttributes {
                 .build();
     }
 
+    // Attribute에 담은 값들을 User 엔티티로 전달해줌. 엔티티를 생성하는 시점은 처음 가입할 때 이므로 Role은 GUEST.
     public User toEntity(){
         return User.builder()
                 .name(name)

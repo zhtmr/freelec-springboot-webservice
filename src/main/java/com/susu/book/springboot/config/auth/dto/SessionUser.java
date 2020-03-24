@@ -5,6 +5,10 @@ import lombok.Getter;
 
 import java.io.Serializable;
 
+// User 엔티티 값을 받을 session Dto
+/*
+
+ */
 @Getter
 public class SessionUser implements Serializable {
     private String name;
