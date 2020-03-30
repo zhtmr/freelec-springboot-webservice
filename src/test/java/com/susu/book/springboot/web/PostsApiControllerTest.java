@@ -5,6 +5,7 @@ import com.susu.book.springboot.domain.posts.PostsRepository;
 import com.susu.book.springboot.web.dto.PostsSaveRequestDto;
 import com.susu.book.springboot.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,16 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -27,6 +33,22 @@ public class PostsApiControllerTest {
 
     @LocalServerPort
     private int port;
+
+    @Autowired
+    private WebApplicationContext context;
+
+    // 아래 @WithMockUser 를 사용하기 위해선 MockMvc가 필요하다. MockMvc 타입 객체 담을 필드.
+    private MockMvc mvc;
+
+    // MockMvcBuilder로 부터 MockMvc 객체를 얻어온다.
+    @Before
+    public void setup(){
+        mvc = MockMvcBuilders
+                .webAppContextSetup(context)
+                .apply(springSecurity()) // build.gradle 에 추가한 spring-security-test 로 부터 static import 할수있다.
+                .build();
+    } // @AutoConfigureMockMvc 를 사용해서 setup() 을 자동으로 구성해주는 내용이 https://stackoverflow.com/questions/48589893/autowire-mockmvc-spring-data-rest 에 나오긴 하지만,
+    // 완벽하지 않은듯.
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -41,6 +63,7 @@ public class PostsApiControllerTest {
 
     // 글 작성 등록이 되는지 테스트함.
     @Test
+    @WithMockUser(roles = "USER") // 모의 사용자. 테스트 시 스프링 시큐리티 302 에러 방지용 권한 부여. @WithMockUser는 MockMvc에서만 작동한다.
     public void Posts_등록된다() {
         //given
         String title="title";
@@ -67,6 +90,7 @@ public class PostsApiControllerTest {
 
     // 수정이 되는지 테스트
     @Test
+    @WithMockUser(roles = "USER")
     public void Posts_수정된다() throws Exception{
         //given
         Posts savedPosts = postsRepository.save(Posts.builder()
