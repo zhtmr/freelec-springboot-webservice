@@ -1,9 +1,13 @@
 package com.susu.book.springboot.web;
 
+import com.susu.book.springboot.config.auth.SecurityConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -12,13 +16,19 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
+// @WebMvcTest 는 @Service를 읽지 못하기 때문에 Test 에러가 난다. secure = false 옵션으로 spring security 를 타지 않고
+// 테스트를 할 수 있지만 현재 deprecated 된 상태이므로 쓰지 않는다. 대신 필터로 scan 할 대상에서 SecurityConfig.class 를 제외시킨다.
+// ASSIGNABLE_TYPE : 대상 구성 요소가 할당 (확장 / 구현) 될 수있는 클래스 (또는 인터페이스) (public class SecurityConfig extends WebSecurityConfigurerAdapter {})
+@WebMvcTest(controllers = HelloController.class,
+        excludeFilters = {
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})
 public class HelloControllerTest {
 
 
     @Autowired
     private MockMvc mvc;
 
+    @WithMockUser(roles = "USER")
     @Test
     public void hello가_리턴된다() throws Exception{
         String hello="hello";
@@ -39,6 +49,7 @@ public class HelloControllerTest {
                 .andExpect(content().string(hello));
     }
 
+    @WithMockUser(roles = "USER")
     @Test
     public void helloDto가_리턴된다() throws Exception {
         String name="hello";

@@ -19,7 +19,6 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        // 파라미터에 LoginUser 어노테이션이 붙어 있는가?
         /*  클래스 타입이 아니라 왜 커스텀 어노테이션 타입으로 바인딩 하는가?
         *
         *   어노테이션 존재유무 판단 없이 특정 클래스가 메소드에서 선언되어있으면 다 리졸버의 대상으로 보도록 구성하게 되면
@@ -46,6 +45,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
             상황에 따라 세션에 있는 값을 사용하기도, 혹은 호출하는 메소드에서 넣어준 값을 사용하기도 해야하는데,
             위 방식은 선택지가 아예 사라지게 됩니다
          */
+        // 파라미터에 LoginUser 어노테이션이 붙어 있는가?
         boolean isLoginUserAnnotation = parameter.getParameterAnnotation(LoginUser.class) != null;
         // 파라미터 타입이 SessionUser 인가?
         /* if(parameter.getParameterType == LoginUser.class) {return true} */
