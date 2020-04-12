@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
 
+// LoginUserArgumentResolver 를 스프링이 인식할 수 있도록 WebMvcConfigurer 에 추가
 @RequiredArgsConstructor
 @Configuration
 public class WebConfig implements WebMvcConfigurer {

@@ -11,6 +11,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpSession;
 
+// 세션을 어노테이션 기반으로 변경
 @RequiredArgsConstructor
 @Component
 public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver {
@@ -56,7 +57,7 @@ public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver 
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        // 파라미터에 전달할 객체 : session 객체
+        // 위 supportsParameter 메소드의 파라미터로 전달할 객체는 session 객체가 된다.
         return httpSession.getAttribute("user");
     }
 }
