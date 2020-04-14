@@ -38,5 +38,5 @@
 
 ## gradle > test 시에 "Test event were not received" 라고 뜰때
 ![wn](https://user-images.githubusercontent.com/48509269/79236227-a6206300-7ea7-11ea-98d8-69ef2cfc0a65.jpg)
-
+>File -> Settings ->Build,Execution, Deployment -> Build Tools -> Gradle
 ![image](https://user-images.githubusercontent.com/48509269/79236273-b6384280-7ea7-11ea-8b02-82222295b7f1.png)
