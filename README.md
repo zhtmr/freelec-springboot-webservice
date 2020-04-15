@@ -7,8 +7,9 @@
 * AWS 무중단 배포
 
 
-## ~~Intellij + SpringBoot + Template engine 에서 livereload 하기~~ : 인텔리제이 커뮤니티에서 안되는듯.. 
-> 이것때문에 travis 빌드 안돼서 주석처리 했음.
+## ~~Intellij + SpringBoot + Template engine 에서 livereload 하기~~  
+> 인텔리제이 커뮤니티에서 안되는듯.. 
+  이것때문에 travis 빌드 안돼서 주석처리 했음.
 
 ![주석 2020-02-27 195456](https://user-images.githubusercontent.com/48509269/75438505-6951e880-599b-11ea-89be-fd4212658e08.jpg)
 
