@@ -37,9 +37,9 @@
         @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})`  
 
 ## Travis CI 가 권한부족으로 gradlew을 실행하지 못할때
-### gradlew 자체에 권한주기
+### - gradlew 자체에 권한주기
 ![image](https://user-images.githubusercontent.com/48509269/79227703-42903880-7e9b-11ea-82cb-574e9b4d7a6f.png)
-### .travis.yml 에 실행권한 추가
+### - .travis.yml 에 실행권한 추가
 ![image](https://user-images.githubusercontent.com/48509269/79239580-b1758d80-7eab-11ea-8595-bda44bf5015a.png)
 
 ## gradle > test 시에 "Test event were not received" 라고 뜰때
