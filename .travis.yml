@@ -20,29 +20,29 @@ cache:
 # master 브랜치에 푸시되었을 때 수행하는 명령어.
 script: "./gradlew clean build"
 
-before_deploy:
-  - zip -r freelec-springboot-webservice *
+before_deploy: # 위에서 빌드 된 jar + 기타 설정파일을 모아 압축(zip). CodeDeploy 는 jar 파일을 인식하지 못하기 때문에 미리 작업해줌.
+  - zip -r freelec-springboot-webservice * # 현재 위치의 모든 파일(*) 을 zip 으로 압축
   - mkdir -p deploy
   - mv freelec-springboot-webservice.zip deploy/freelec-springboot-webservice.zip
 
 deploy:
-  - provider: s3
+  - provider: s3 # s3로 파일 업로드
     access_key_id: $AWS_ACCESS_KEY # Travis repo settings 에 설정된 값
     secret_access_key: $AWS_SECRET_KEY # Travis repo settings 에 설정된 값
     bucket: freelec-springboot-build-sw # s3 버킷
     region: ap-northeast-2 # s3 리전
     skip_cleanup: true
     acl: private # zip 파일 접근을 private
-    local_dir: deploy # before_deploy 에서 생성한 디렉토리. 해당 위치의 파일들만 s3로 전송
+    local_dir: deploy # before_deploy 에서 생성한 디렉토리. 해당 위치의 파일(현재 freelec-springboot-webservice.zip이 들어있다.) 들만 s3로 전송
     wait-until-deployed: true
 
-  - provider: codedeploy
+  - provider: codedeploy # code deploy 로 배포
     access_key_id: $AWS_ACCESS_KEY # Travis repo setting에 설정된 값
     secret_access_key: $AWS_SECRET_KEY
     bucket: freelec-springboot-build-sw
     key: freelec-springboot2-webservice.zip # 빌드 파일을 압축해서 전달
     bundle_type: zip # 압축 확장자
-    application: freelec-springboot2-webservice # 웹 콘솔에서 등록한 CodeDeploy  애플리케이션
+    application: freelec-springboot2-webservice # 웹 콘솔에서 등록한 CodeDeploy 애플리케이션
     deployment_group: freelec-springboot2-webservice-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
     region: ap-northeast-2
     wait-until-deployed: true
