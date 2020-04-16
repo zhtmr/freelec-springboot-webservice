@@ -1,13 +1,6 @@
-matrix:
-  include:
-    - language: java
-      jdk:
-        - openjdk8
-    # code deploy를 사용하기 위한 ruby 설치
-    - language: ruby
-      rvm:
-        - 2.7.1
-
+language: java
+jdk:
+  - openjdk8
 
 # master 브랜치가 푸시될때 travis 작동
 branches:
@@ -16,7 +9,8 @@ branches:
 
 before_install:
   - chmod +x gradlew
-
+  # code deploy를 사용하기 위한 ruby 설치
+  - sudo yum install ruby
 # Travis CI 서버의 Home
 # 그레이들을 통해 한번 받은 의존성은 캐시하여, 같은 의존성은 다음 배포때부터 받지 않음.
 cache:
