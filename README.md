@@ -79,7 +79,7 @@
 ![image](https://user-images.githubusercontent.com/48509269/79465961-f0841a00-8036-11ea-9c5a-fe557cb537da.png)
 
 
-### - 삽질하다가 알게된 Travis 에서 멀티 language 하는 방법 예시
+### - Travis 에서 멀티 language 하는 방법 예시
 
  ```project/ - top-level github directory
    project/backend - Python backend
