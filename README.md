@@ -49,7 +49,7 @@
 ![image](https://user-images.githubusercontent.com/48509269/79236273-b6384280-7ea7-11ea-8b02-82222295b7f1.png)
 
 ## Travis 빌드 실패... 
-
+> 2020.4.18 현재 다시 해당 오류 발생함. 도저히 원인을 모르겠음
 
 ![image](https://user-images.githubusercontent.com/48509269/79460822-56b96e80-8030-11ea-8f6a-3c1d48a907ca.png)
 
@@ -57,26 +57,20 @@
 ![image](https://user-images.githubusercontent.com/48509269/79461069-a13aeb00-8030-11ea-9340-38f3a4816a77.png)
 
 
-> 아래처럼 codedeploy 부분을 주석처리 했을때는 빌드가 성공적으로 됐다.
-![image](https://user-images.githubusercontent.com/48509269/79464376-f2e57480-8034-11ea-951f-6017290cf783.png)
-
-
-
 * 현재 aws IAM(Identity and Access Management) 를 통해 Travis CI는 S3 와 CodeDeploy 권한을 부여받은 상태임
 * Travis CI 에서 S3로 build 파일은 전달이 잘 되었음.
+> 2020.4.18 현재 S3에도 빌드파일이 안올라감.. travis에서 JPA 오류 뜨면서 빌드 자체가 안되는중..
+
 ![image](https://user-images.githubusercontent.com/48509269/79466698-e3b3f600-8037-11ea-8798-a5c30a5a6a26.png)
 
 * 그러나 Travis CI가 codedeploy 에 배포요청 시 S3에 있는 파일을 가져오지 못함.
+
 ![image](https://user-images.githubusercontent.com/48509269/79466890-22e24700-8038-11ea-9b4f-d53e3bbe7e14.png)
 
 
+* travis 웹사이트에서 `Restart build` 하게 되면 빌드 실패뜸..
+![image](https://user-images.githubusercontent.com/48509269/79549608-2de9b580-80d2-11ea-830e-f6d1d0d1e0ee.png)
 
-> 자세히 보니 S3에 올라가 있는 파일명과 code deploy 에서 받아오는 파일명(key)이 달랐음.....
-![image](https://user-images.githubusercontent.com/48509269/79465657-9aaf7200-8036-11ea-8343-3bc238cdfc39.png)
-
-
-* github에 올라간 프로젝트 명으로 일치시켜 주니 제대로 빌드 됨..
-![image](https://user-images.githubusercontent.com/48509269/79465961-f0841a00-8036-11ea-9c5a-fe557cb537da.png)
 
 
 ### - Travis 에서 멀티 language 하는 방법 예시
