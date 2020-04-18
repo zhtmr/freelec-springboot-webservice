@@ -1,6 +1,6 @@
 language: java
 jdk:
-    - openjdk8
+  - openjdk8
 
 # master 브랜치가 푸시될때 travis 작동
 branches:
