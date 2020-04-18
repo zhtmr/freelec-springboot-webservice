@@ -7,8 +7,8 @@ branches:
   only:
     - master
 
-before_install:
-  - chmod +x gradlew
+#before_install:
+#  - chmod +x gradlew
 
 # Travis CI 서버의 Home
 # 그레이들을 통해 한번 받은 의존성은 캐시하여, 같은 의존성은 다음 배포때부터 받지 않음.
