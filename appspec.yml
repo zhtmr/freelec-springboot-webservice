@@ -16,6 +16,6 @@ permissions: # C.D 에서 EC2로 넘겨준 파일들을 모두 ec2-user 권한�
 
 hooks: # 배포 단계에서 실행할 명령어
   ApplicationStart:
-    - lacation: deploy.sh
+    - location: deploy.sh
       timeout: 60 # 스크립트 실행 60초 이상 수행시 실패
       runas: ec2-user
