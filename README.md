@@ -48,12 +48,12 @@
 
 ![image](https://user-images.githubusercontent.com/48509269/79236273-b6384280-7ea7-11ea-8b02-82222295b7f1.png)
 
-## Travis 빌드 실패... (po삽질wer)
+## Travis 빌드 실패... 
 
-> JPA 오류가 떠서 코드에 오류가 있는줄 알았다..
+
 ![image](https://user-images.githubusercontent.com/48509269/79460822-56b96e80-8030-11ea-8f6a-3c1d48a907ca.png)
 
-> 더 높은 버전의 Ruby로 업그레이드 해야되는줄 알았다..
+
 ![image](https://user-images.githubusercontent.com/48509269/79461069-a13aeb00-8030-11ea-9340-38f3a4816a77.png)
 
 
