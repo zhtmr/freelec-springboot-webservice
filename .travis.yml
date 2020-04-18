@@ -7,9 +7,6 @@ branches:
   only:
     - master
 
-#before_install:
-#  - chmod +x gradlew
-
 # Travis CI 서버의 Home
 # 그레이들을 통해 한번 받은 의존성은 캐시하여, 같은 의존성은 다음 배포때부터 받지 않음.
 cache:
@@ -50,6 +47,9 @@ deploy:
     deployment_group: freelec-springboot2-webservice-group # 웹 콘솔에서 등록한 CodeDeploy 배포 그룹
     region: ap-northeast-2
     wait-until-deployed: true
+
+before_install:
+  - chmod +x gradlew
 
 # CI 실행 완료 시 메일로 알람
 notifications:
