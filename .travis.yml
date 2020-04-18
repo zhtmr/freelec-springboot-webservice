@@ -35,7 +35,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY # Travis repo settings 에 설정된 값
     bucket: freelec-springboot-build-sw # s3 버킷
     region: ap-northeast-2 # s3 리전
-    cleanup: true
+    skip_cleanup: true
     acl: private # zip 파일 접근을 private
     local_dir: deploy # before_deploy 에서 생성한 디렉토리. 해당 위치의 파일(현재 freelec-springboot-webservice.zip이 들어있다.) 들만 s3로 전송
     wait-until-deployed: true
