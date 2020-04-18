@@ -1,7 +1,6 @@
 #!/bin/bash
 
 REPOSITORY=/home/ec2-user/app/step2
-# shellcheck disable=SC2034
 PROJECT_NAME=freelec-springboot-webservice
 
 echo "> Build 파일 복사"
