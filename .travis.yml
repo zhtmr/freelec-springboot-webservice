@@ -27,7 +27,7 @@ before_deploy: # 위에서 빌드 된 jar + 기타 설정파일을 모아 압축
   - cp build/libs/*.jar before-deploy/ # 빌드파일(.jar)
   - cd before-deploy && zip -r before-deploy * # before-deploy 로 이동 후 전체 압축
   - cd ../ && mkdir -p deploy # 상위 디렉토리로 이동 후 deploy 디렉토리 생성
-  - mv before-deploy/before-deploy.zip deploy/freelec-springboot-webservice.zip # deploy 로 zip 파일 이동m
+  - mv before-deploy/before-deploy.zip deploy/freelec-springboot-webservice.zip # deploy 로 zip 파일 이동
 
 deploy:
   - provider: s3 # s3로 파일 업로드
