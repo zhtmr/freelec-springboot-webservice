@@ -2,3 +2,9 @@
 .gradle
 .idea
 application-oauth.properties
+HELP.md
+
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**
+!**/src/test/**
