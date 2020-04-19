@@ -13,7 +13,7 @@ permissions: # C.D 에서 EC2로 넘겨준 파일들을 모두 ec2-user 권한�
     pattern: "**"
     owner: ec2-user
     group: ec2-user
-
+# dddddd
 hooks: # 배포 단계에서 실행할 명령어
   ApplicationStart:
     - location: deploy.sh
