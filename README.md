@@ -53,11 +53,11 @@
 ![image](https://user-images.githubusercontent.com/48509269/79236273-b6384280-7ea7-11ea-8b02-82222295b7f1.png)
 
 ## Travis 빌드 실패... 
-> ~~2020.4.18 현재 다시 해당 오류 발생함. 도저히 원인을 모르겠음~~
-> appspec.yml 에 오타가 있어서 빌드가 안됐었음.
-> 로컬에서 build 후 커밋푸쉬 했을때는 travis에서 빌드가 됐다가 안됐다가 반복함.
-> 로컬에서 clean > build 하니까 성공. 
-> .gitignore 에 build 관련 등록
+> - ~~2020.4.18 현재 다시 해당 오류 발생함. 도저히 원인을 모르겠음~~  
+> - appspec.yml 에 오타가 있어서 빌드가 안됐었음.  
+> - 로컬에서 build 후 커밋푸쉬 했을때는 travis에서 빌드가 됐다가 안됐다가 반복함.  
+> - 로컬에서 clean > build 하니까 성공.   
+> - .gitignore 에 build 관련 등록  
 
 ![image](https://user-images.githubusercontent.com/48509269/79460822-56b96e80-8030-11ea-8f6a-3c1d48a907ca.png)
 
