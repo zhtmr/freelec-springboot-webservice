@@ -49,7 +49,11 @@
 ![image](https://user-images.githubusercontent.com/48509269/79236273-b6384280-7ea7-11ea-8b02-82222295b7f1.png)
 
 ## Travis 빌드 실패... 
-> 2020.4.18 현재 다시 해당 오류 발생함. 도저히 원인을 모르겠음
+> ~~2020.4.18 현재 다시 해당 오류 발생함. 도저히 원인을 모르겠음~~
+> appspec.yml 에 오타가 있어서 빌드가 안됐었음.
+> 로컬에서 build 후 커밋푸쉬 했을때는 travis에서 빌드가 됐다가 안됐다가 반복함.
+> 로컬에서 clean > build 하니까 성공. 
+> .gitignore 에 build 관련 등록
 
 ![image](https://user-images.githubusercontent.com/48509269/79460822-56b96e80-8030-11ea-8f6a-3c1d48a907ca.png)
 
@@ -59,7 +63,7 @@
 
 * 현재 aws IAM(Identity and Access Management) 를 통해 Travis CI는 S3 와 CodeDeploy 권한을 부여받은 상태임
 * Travis CI 에서 S3로 build 파일은 전달이 잘 되었음.
-> 2020.4.18 현재 S3에도 빌드파일이 안올라감.. travis에서 JPA 오류 뜨면서 빌드 자체가 안되는중..
+> ~~2020.4.18 현재 S3에도 빌드파일이 안올라감.. travis에서 JPA 오류 뜨면서 빌드 자체가 안되는중..~~
 
 ![image](https://user-images.githubusercontent.com/48509269/79466698-e3b3f600-8037-11ea-8798-a5c30a5a6a26.png)
 
