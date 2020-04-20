@@ -30,11 +30,12 @@
 
 따라서 `@WebMvcTest` 는 SecurityConfig를 생성하기 위해 필요한 `@Service` 인 CustomOAuth2UserService를 읽지 못함. 
 
->1. (`secure = false` 옵션은 2.1부터 지원하지 않음. )
->2. **필터** 
+> 1. (`secure = false` 옵션은 2.1부터 지원하지 않음. )
+> 2. **필터** 
 `controllers = HelloController.class,
         excludeFilters = {
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})`  
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)})`
+        
 
 ## Travis CI 가 권한부족으로 gradlew을 실행하지 못할때
 ### gradlew 자체에 권한주기
