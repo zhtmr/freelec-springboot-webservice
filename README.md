@@ -120,3 +120,4 @@ matrix:
 notifications:
   email:
     - yourname@gmail.com
+```
