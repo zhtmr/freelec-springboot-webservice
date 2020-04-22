@@ -1,5 +1,5 @@
 
-application-oauth.properties
+
 HELP.md
 .gradle
 build/
@@ -22,6 +22,7 @@ build/
 *.iml
 *.ipr
 out/
+application-oauth.properties
 
 ### NetBeans ###
 /nbproject/private/
