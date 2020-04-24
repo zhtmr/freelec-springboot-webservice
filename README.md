@@ -14,9 +14,9 @@
 ![주석 2020-02-27 195456](https://user-images.githubusercontent.com/48509269/75438505-6951e880-599b-11ea-89be-fd4212658e08.jpg)
 
 ## .gitignore 작동 안할때 -> 캐시삭제
-> git rm -r --cached .
-  git add .
-  git commit -m "fixed untracked files"
+> git rm -r --cached .  
+  git add .  
+  git commit -m "fixed untracked files"  
 
 ## MockMvc 
 ![image](https://user-images.githubusercontent.com/48509269/78100506-ed2a4500-741f-11ea-83a5-d71b7542347d.png)
