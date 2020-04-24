@@ -16,7 +16,7 @@ public class ProfileController {
   @GetMapping("/profile")
   public String profile(){
     // real, oauth, real-db 등의 현재 실행중인 프로필(.properties 파일)
-    List<String> profiles = Arrays.asList(env.getActiveProfiles()); // asList : 배열을 List 형태로 가져옴. 원본 배열을 수정해도 List 바뀌고, 그 반대도 마찬가지.
+    List<String> profiles = Arrays.asList(env.getActiveProfiles()); // asList : 배열을 List 형태로 가져옴. 원본 배열을 수정해도 List 바뀌고, 그 반대도 마찬가지. add는 안됨.
     List<String> realProfiles = Arrays.asList("real", "real1", "real2");
     // 삼항연산자
     //  String defaultProfile;
@@ -39,7 +39,7 @@ public class ProfileController {
     return  profiles.stream()
         .filter(realProfiles::contains)
         .findAny()
-        .orElse(defaultProfile);
+        .orElse(defaultProfile); // 최종연산을 끝낸뒤에도 객체가 비어있으면 defaultProfile
 
 //    List<String> names = Arrays.asList("jeong", "pro", "jdk", "java");
 //// 기존의 코딩 방식
