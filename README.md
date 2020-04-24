@@ -173,7 +173,7 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 따라서 accept가 구현해야할 메소드는 System.out의 println 이라고 ``메소드 참조`` 방식으로 전달하기만 하면된다.
 
 
-## Stream()
+### Stream()
 ![image](https://user-images.githubusercontent.com/48509269/80200804-268c5400-865e-11ea-91cf-0f0235cf663a.png)
 
 ![image](https://user-images.githubusercontent.com/48509269/80200847-360b9d00-865e-11ea-8da2-5a50eea791d2.png)
