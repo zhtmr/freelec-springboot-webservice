@@ -83,7 +83,9 @@
 
 ### - Travis 에서 멀티 language 하는 방법 예시
 
- ```project/ - top-level github directory
+<pre>
+<code> 
+   project/ - top-level github directory
    project/backend - Python backend
    project/backend/tests - Python tests
    project/android/AppName - Android app
@@ -123,4 +125,62 @@ matrix:
 
 notifications:
   email:
-    - yourname@gmail.com```
+    - yourname@gmail.com
+</code>
+</pre>
+
+## 메소드 참조, 생성자 참조
+### 람다식
+<pre>
+<code>
+String [] strings = new String [] {
+    "6", "5", "4", "3", "2", "1"
+};
+
+List<String> list = Arrays.asList(strings);
+
+for(String s : strings)
+    System.out.println(s);
+</code>
+</pre>
+위와 같은 코드를 람다식으로 표현 한다면
+
+``list.forEach(x -> System.out.println(x));``  
+> java 8 부터 stream() 을 이용해 메소드 들을 체이닝(chaining)을 통해 조합해서 사용할 수 있다.  
+for, if 등을 훨씬 간략하게 사용가능함. 그러나 무분별하게 사용 시 [성능 이슈](https://homoefficio.github.io/2016/06/26/for-loop-%EB%A5%BC-Stream-forEach-%EB%A1%9C-%EB%B0%94%EA%BE%B8%EC%A7%80-%EB%A7%90%EC%95%84%EC%95%BC-%ED%95%A0-3%EA%B0%80%EC%A7%80-%EC%9D%B4%EC%9C%A0/)가 있다. 
+
+#### 어떻게 가능한가?
+먼저 forEach 의 생김세를 보면 Consumer functional interface를 매개변수로 받는 stream 인터페이스의 추상메소드다.
+![image](https://user-images.githubusercontent.com/48509269/80193896-8a118400-8654-11ea-9d23-c11c60b367e5.png)
+> Consumer 함수적 인터페이스는 리턴값이 없는 accept() 메소드를 가지고 있다.  
+Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 말은 사용만하고 리턴값이 없다는 뜻이다.  
+![image](https://user-images.githubusercontent.com/48509269/80194162-f096a200-8654-11ea-9bb3-8404f6692ee4.png)  
+![image](https://user-images.githubusercontent.com/48509269/80194192-f9877380-8654-11ea-955b-4c8d2239e809.png)
+   
+
+사실 위에서 ``list.forEach(x -> System.out.println(x));``  이렇게 구현한 방법은  *list의 요소를 입력받아, 단순히 println메소드에 전달해주는 역할만*  한 것이다. 함수형 인터페이스인 Consumer 가 가지고 있는 accept 메소드의 구현체를 직접 전달한 것이다. 이렇게 될 경우 Consumer가 구현해야 되는 accept 메소드가 실행될때 println메소드를 한번더 실행해주는 형태가되어, 메소드의 call stack이 1depth 깊어진 결과가 된다. 
+
+어차피 forEach에 전달되는 매개변수는 Consumer의 accept 메소드로 가게되어 구현을 해야만 하는데, 미리 구현을 해서 전달을 하게되면 두 번 구현을 하게됨. 아래처럼 **accept가 구현해야 할 메소드만 전달**하면 된다.
+
+``list.forEach(System.out::println);``
+
+실제로 Consumer 인터페이스의 accept 메소드는 아래처럼 생겼다. 리턴값이 없다.
+![image](https://user-images.githubusercontent.com/48509269/80194649-a3ff9680-8655-11ea-9fe3-db152481320b.png)
+
+그리고 System.out.println() 의 모양은 아래처럼 생겼다. 마찬가지로 리턴값이 없다.
+![image](https://user-images.githubusercontent.com/48509269/80194906-12dcef80-8656-11ea-9f3a-0aec65a2208e.png)
+
+따라서 accept가 구현해야할 메소드는 System.out의 println 이라고 ``메소드 참조`` 방식으로 전달하기만 하면된다.
+
+
+## Stream()
+![image](https://user-images.githubusercontent.com/48509269/80200804-268c5400-865e-11ea-91cf-0f0235cf663a.png)
+
+![image](https://user-images.githubusercontent.com/48509269/80200847-360b9d00-865e-11ea-8da2-5a50eea791d2.png)
+
+![image](https://user-images.githubusercontent.com/48509269/80200952-5d626a00-865e-11ea-892f-82c4ecaedc8a.png)
+
+![image](https://user-images.githubusercontent.com/48509269/80201052-8125b000-865e-11ea-8924-e55f64a2588f.png)
+
+* * *
+![image](https://user-images.githubusercontent.com/48509269/80201292-de216600-865e-11ea-9367-748aa6a32121.png)
