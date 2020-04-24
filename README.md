@@ -167,7 +167,7 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 실제로 Consumer 인터페이스의 accept 메소드는 아래처럼 생겼다. 리턴값이 없다.
 ![image](https://user-images.githubusercontent.com/48509269/80194649-a3ff9680-8655-11ea-9fe3-db152481320b.png)
 
-그리고 System.out.println() 의 모양은 아래처럼 생겼다. 마찬가지로 리턴값이 없다.  
+그리고 System.out.println() 의 모양은 아래처럼 생겼다. 마찬가지로 리턴값이 없다.
 ![image](https://user-images.githubusercontent.com/48509269/80194906-12dcef80-8656-11ea-9f3a-0aec65a2208e.png)
 
 따라서 accept가 구현해야할 메소드는 System.out의 println 이라고 ``메소드 참조`` 방식으로 전달하기만 하면된다.
@@ -184,3 +184,4 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 
 * * *
 ![image](https://user-images.githubusercontent.com/48509269/80201292-de216600-865e-11ea-9367-748aa6a32121.png)
+> [람다 테스트](https://github.com/zhtmr/lambdatest/tree/master/src/lamdaTest)
