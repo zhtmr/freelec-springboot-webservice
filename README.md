@@ -158,16 +158,16 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 ![image](https://user-images.githubusercontent.com/48509269/80194192-f9877380-8654-11ea-955b-4c8d2239e809.png)
    
 
-사실 위에서 ``list.forEach(x -> System.out.println(x));``  이렇게 구현한 방법은  *list의 요소를 입력받아, 단순히 println메소드에 전달해주는 역할만*  한 것이다. 함수형 인터페이스인 Consumer 가 가지고 있는 accept 메소드의 구현체를 직접 전달한 것이다. 이렇게 될 경우 Consumer가 구현해야 되는 accept 메소드가 실행될때 println메소드를 한번더 실행해주는 형태가되어, 메소드의 call stack이 1depth 깊어진 결과가 된다. 
+사실 위에서 ``list.forEach(x -> System.out.println(x));``  이렇게 구현한 방법은  *list의 요소를 입력받아, 단순히 println메소드에 전달해주는 역할만*  한 것이다. 함수형 인터페이스인 Consumer 가 가지고 있는 accept 메소드의 구현체를 직접 전달한 것이다. 이렇게 될 경우 Consumer가 구현해야 되는 accept 메소드가 실행될때 println메소드를 한번더 실행해주는 형태가되어, 메소드의 **[call stack](https://ko.wikipedia.org/wiki/%EC%BD%9C_%EC%8A%A4%ED%83%9D)** 이 1depth 깊어진 결과가 된다. 
 
 어차피 forEach에 전달되는 매개변수는 Consumer의 accept 메소드로 가게되어 구현을 해야만 하는데, 미리 구현을 해서 전달을 하게되면 두 번 구현을 하게됨. 아래처럼 **accept가 구현해야 할 메소드만 전달**하면 된다.
 
 ``list.forEach(System.out::println);``
 
-실제로 Consumer 인터페이스의 accept 메소드는 아래처럼 생겼다. 리턴값이 없다.
+실제로 Consumer 인터페이스의 accept 메소드는 아래처럼 생겼다. 리턴값이 없다.  
 ![image](https://user-images.githubusercontent.com/48509269/80194649-a3ff9680-8655-11ea-9fe3-db152481320b.png)
 
-그리고 System.out.println() 의 모양은 아래처럼 생겼다. 마찬가지로 리턴값이 없다.
+그리고 System.out.println() 의 모양은 아래처럼 생겼다. 마찬가지로 리턴값이 없다.  
 ![image](https://user-images.githubusercontent.com/48509269/80194906-12dcef80-8656-11ea-9f3a-0aec65a2208e.png)
 
 따라서 accept가 구현해야할 메소드는 System.out의 println 이라고 ``메소드 참조`` 방식으로 전달하기만 하면된다.
