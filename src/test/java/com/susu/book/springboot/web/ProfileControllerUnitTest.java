@@ -11,7 +11,7 @@ public class ProfileControllerUnitTest {
   @Test
   public void real_profile이_조회된다(){
     // given
-    String expectedProfile = "real";
+    String expectedProfile = "real"; // deploy.sh에 현재 활성화 시킨 profile : -Dspring.profiles.active=real \
     MockEnvironment env = new MockEnvironment();
     env.addActiveProfile(expectedProfile);
     env.addActiveProfile("oauth");

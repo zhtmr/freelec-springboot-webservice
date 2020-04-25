@@ -15,7 +15,7 @@ public class ProfileController {
 
   @GetMapping("/profile")
   public String profile(){
-    // real, oauth, real-db 등의 현재 실행중인 프로필(.properties 파일)
+    // real, oauth, real-db 등의 현재 실행중인 프로필(.properties 파일). deploy.sh 에서 현재 활성화 시킨 profile : -Dspring.profiles.active=real \
     List<String> profiles = Arrays.asList(env.getActiveProfiles()); // asList : 배열을 List 형태로 가져옴. 원본 배열을 수정해도 List 바뀌고, 그 반대도 마찬가지. add는 안됨.
     List<String> realProfiles = Arrays.asList("real", "real1", "real2");
     // 삼항연산자
