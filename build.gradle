@@ -20,7 +20,8 @@ apply plugin: 'io.spring.dependency-management'  //의존성 관리 플러그인
 
 
 group 'com.susu.book'
-version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+//version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss") EC2 용량때문에 주석처리함. 실제 서비스에서는 날짜 기록함.
+version '1.0.1-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
