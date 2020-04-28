@@ -20,7 +20,7 @@ apply plugin: 'io.spring.dependency-management'  //의존성 관리 플러그인
 
 
 group 'com.susu.book'
-version '1.0.1-SNAPSHOT'
+version '1.0.1-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 
 sourceCompatibility = 1.8
 
