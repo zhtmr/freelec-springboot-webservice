@@ -5,7 +5,7 @@ version: 0.0 # CodeDeploy 버전 (0.0 외에 다른 버전 사용하면 오류)
 os: linux
 files:
   - source: / # CodeDeploy 에서 전달해준 파일 : 전체 파일(/)
-    destination: /home/ec2-user/app/step2/zip/ # source 에서 지정한 파일을 받을 위치. 이후 destination 에서 옮긴 파일들로 진행
+    destination: /home/ec2-user/app/step3/zip/ # source 에서 지정한 파일을 받을 위치. 이후 destination 에서 옮긴 파일들로 진행
     overwrite: yes # 기존에 파일이 있으면 덮어쓰기
 
 permissions: # C.D 에서 EC2로 넘겨준 파일들을 모두 ec2-user 권한을 갖도록
@@ -15,7 +15,15 @@ permissions: # C.D 에서 EC2로 넘겨준 파일들을 모두 ec2-user 권한�
     group: ec2-user
 
 hooks: # 배포 단계에서 실행할 명령어
+  AfterInstall:
+    - location: stop.sh # 엔진엑스와 연결되어 있지 않은 스프링 부트를 종료
+      timeout: 60
+      runas: ec2-useer
   ApplicationStart:
-    - location: deploy.sh
+    - location: start.sh # 엔진엑스와 연결되어 있지 않은 port로 새 버전의 스프링부트 시작
       timeout: 60 # 스크립트 실행 60초 이상 수행시 실패
+      runas: ec2-user
+  ValidateService:
+    - location: health.sh # 새 스프링 부트가 정상적으로 실행됐는지 확인
+      timeout: 60
       runas: ec2-user
