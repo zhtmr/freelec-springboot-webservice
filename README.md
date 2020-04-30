@@ -230,13 +230,13 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 
 ![image](https://user-images.githubusercontent.com/48509269/80685228-d3a11980-8b01-11ea-96b9-84d2316c2144.png)
 
-/profile 주소로 들어가도 계속 real 만 나옴. real1, real2 이 번갈아가면서 나와야 되는거 아닌가??   
+/profile 주소로 들어가도 계속 real 만 나옴. real1, real2 이 번갈아가면서 나와야 되는거 아닌가??     
 -> application.properties에서 `spring.profiles.include=oauth` 로 바꾸니까 `real1`, `real2` 번갈아가면서 나옴.
 
 
 > 브라우저에서 보여지는 값은 application.properties 에서 `spring.profiles.include=`가 `List<String> realProfiles = Arrays.asList("real", "real1", "real2")` 중 하나로 되어 있을때는 그것만 보임. (`findAny()`).  
 
-![image](https://user-images.githubusercontent.com/48509269/80756714-0123ac80-8b6e-11ea-8d9a-4c2535f397b7.png)
+![image](https://user-images.githubusercontent.com/48509269/80756714-0123ac80-8b6e-11ea-8d9a-4c2535f397b7.png)  
 -> 현재 활성화된 프로필은 IDLE_PROFILE 이다 
 
 
@@ -245,7 +245,7 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 
 #### 원인
 
-> nginx는 real1(8081), real2(8082)만 관리함. real 은 nginx가 관리하지 않는 profile임.
+> nginx는 real1(8081), real2(8082)만 관리함. real 은 nginx가 관리하지 않는 profile임.  
 jar가 `spring.profiles.include=real`로 실행중이였음. 
 
 따라서 profile.sh 에서 IDLE_PROFILE 체크 시에 
