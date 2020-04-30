@@ -248,7 +248,6 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 > nginx는 real1(8081), real2(8082)만 관리함. real 은 nginx가 관리하지 않는 profile임.  
 jar가 `spring.profiles.include=real`로 실행중이였음. 
 
-따라서 profile.sh 에서 IDLE_PROFILE 체크 시에 
 
  `spring.profiles.include=oauth` 로 변경 후(또는 ProfileController 에서 `real`을 빼거나.), 배포하게되면 real1(8081), real2(8082) 가 번갈아가면서 배포된다. 
 ![image](https://user-images.githubusercontent.com/48509269/80686064-1a434380-8b03-11ea-8142-26848b0de133.png)
