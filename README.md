@@ -210,7 +210,7 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 4. 요청을 분기할 ProfileController 만들기
 ( "/profile" 요청 결과를 가지고 포트변경하기 위함)
 5. profile 만들기 (application-real1.properties, application-real2.properties)
-6. `appspec.yml` 에서 Jar 파일이 복사된 이후 차례로 실행될 스크립트 정의하기 
+6. `appspec.yml` 에서 Jar 파일이 복사된 이후 차례로 실행될 스크립트 정의하기  
 **stop.sh -> start.sh -> health.sh** 순으로 실행됨
 (nginx가 연결되어 있지 않은 스프링부트를 종료시키고 그 profile로 배포 후 작동테스트한 다음 switch !)
 
@@ -218,7 +218,7 @@ Consumer는 단지 매개값을 소비하는 역할만 하며, 소비한다는 �
 > "/profile" 요청이 오면 어디로 이동 되는가? : 
 `List<String> realProfiles = Arrays.asList("real", "real1", "real2");`
 `String defaultProfile = profiles.isEmpty()? "default" : profiles.get(0);`
-`return  profiles.stream().filter(realProfiles::contains).findAny().orElse(defaultProfile);`
+`return  profiles.stream().filter(realProfiles::contains).findAny().orElse(defaultProfile);`  
 -> real, real1, real2 중에 하나라도 있으면 반환, 전부 없을 경우 실행중인 첫번째 profile 반환
 
 ### Nginx 관련 시행착오..
