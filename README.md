@@ -256,4 +256,5 @@ jar가 `spring.profiles.include=real`로 실행중이였음.
 
  `spring.profiles.include=oauth` 로 변경 후(또는 ProfileController 에서 `real`을 빼거나.), 배포하게되면 real1(8081), real2(8082) 가 번갈아가면서 배포된다. 
 ![image](https://user-images.githubusercontent.com/48509269/80686064-1a434380-8b03-11ea-8142-26848b0de133.png)
-
+  
+* * *
