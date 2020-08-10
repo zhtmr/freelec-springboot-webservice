@@ -14,7 +14,7 @@ public class ProfileController {
   private final Environment env;
 
   @GetMapping("/profile")
-  public String profile(){
+  public String profile() {
     // real, oauth, real-db 등의 현재 실행중인 프로필(.properties 파일). deploy.sh 에서 현재 활성화 시킨 profile : -Dspring.profiles.active=real \
     List<String> profiles = Arrays.asList(env.getActiveProfiles()); // asList : 배열을 List 형태로 가져옴. 원본 배열을 수정해도 List 바뀌고, 그 반대도 마찬가지. add는 안됨.
     List<String> realProfiles = Arrays.asList("real", "real1", "real2");
@@ -34,6 +34,7 @@ public class ProfileController {
     //      }
     //    }
     //    return defaultProfile;
+
 
     // Stream은 자바 8부터 추가된 기능으로 "컬렉션, 배열등의 저장 요소를 하나씩 참조하며 함수형 인터페이스(람다식)를 적용하며 반복적으로 처리할 수 있도록 해주는 기능"이다.
     return  profiles.stream()
