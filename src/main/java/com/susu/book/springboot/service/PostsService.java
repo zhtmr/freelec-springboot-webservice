@@ -138,7 +138,6 @@ public class PostsService {
     }
 
     // 조회
-
     public PostsResponseDto findById(Long id) {
         Posts entity = postsRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다. id=" + id));
 //        Posts entity2 = postsRepository.findById(id).orElseThrow(IllegalArgumentException::new);
